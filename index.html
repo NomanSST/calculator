@@ -1,48 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator</title>
+    <meta charset="utf-8">
+    <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <table class="calculator">
         <tr>
-            <td colspan="5"><input class="display-box" type="text" id="result" disabled /></td>
-            
+            <td colspan="3"><input type="text" id="result" class="display-box" disabled></td>
         </tr>
         <tr>
-            <td><input type="button" value="AC" ondblclick="clearScreen()" id="ac-btn" /></td>
-            <td><input type="button" value="DEL" onclick="deleteItem()" id="del-btn" /></td>
+            <td><input id="on-btn" type="button" value="ON " onclick="calcOn()"></td>
+            <td><input id="off-btn" type="button" value="OFF" onclick="calcOff()"></td>
+            <td><input type="button" value="AC " ondblclick="clearScreen()" id="ac-btn"></td>
+            <td><input type="button" value="DEL" onclick="deleteOne()" id="del-btn"></td>
         </tr>
         <tr>
-            <td><input type="button" value="7" onclick="display('7')" /></td>
-            <td><input type="button" value="8" onclick="display('8')" /></td>
-            <td><input type="button" value="9" onclick="display('9')" /></td>
-            <td><input type="button" id="op1" value="/" onclick="display('/')" /></td>
+            <td><input type="button" value="7" onclick="display('7')"></td>
+            <td><input type="button" value="8" onclick="display('8')"></td>
+            <td><input type="button" value="9" onclick="display('9')"></td>
+            <td><input id="op1" type="button" value="/" onclick="display('/')"></td>
         </tr>
         <tr>
-            <td><input type="button" value="4" onclick="display('4')" /></td>
-            <td><input type="button" value="5" onclick="display('5')" /></td>
-            <td><input type="button" value="6" onclick="display('6')" /></td>
-            <td><input type="button" id="op2" value="-" onclick="display('-')" /></td>
+            <td><input type="button" value="4" onclick="display('4')"></td>
+            <td><input type="button" value="5" onclick="display('5')"></td>
+            <td><input type="button" value="6" onclick="display('6')"></td>
+            <td><input id="op2" type="button" value="*" onclick="display('*')"></td>
         </tr>
         <tr>
-            <td><input type="button" value="1" onclick="display('1')" /></td>
-            <td><input type="button" value="2" onclick="display('2')" /></td>
-            <td><input type="button" value="3" onclick="display('3')" /></td>
-            <td><input type="button" id="op3" value="+" onclick="display('+')" /></td>
+            <td><input type="button" value="1" onclick="display('1')"></td>
+            <td><input type="button" value="2" onclick="display('2')"></td>
+            <td><input type="button" value="3" onclick="display('3')"></td>
+            <td><input id="op3" type="button" value="-" onclick="display('-')"></td>
         </tr>
         <tr>
-            <td><input type="button" value="." onclick="display('.')" /></td>
-            <td><input type="button" value="0" onclick="display('0')" /></td>
-            <td><input type="button" value="=" onclick="calculate()" id="btn2" /></td>
-            <td><input id="op4" type="button" value="*" onclick="display('*')" /></td>
+            <td><input type="button" value="." onclick="display('.')"></td>
+            <td><input type="button" value="0" onclick="display('0')"></td>
+            <td><input id="equal-btn" type="button" value="=" onclick="calculate()"></td>
+            <td><input id="op4" type="button" value="+" onclick="display('+')"></td>
         </tr>
     </table>
+
     <script>
         function clearScreen(){
             document.getElementById("result").value="";
@@ -56,7 +55,7 @@
             var q=eval(p);
             document.getElementById("result").value = q;
         }
-        function deleteItem() {
+        function deleteOne() {
             // Get the current value of the calculator display
             var currentValue = document.getElementById("result").value;
 
@@ -65,6 +64,13 @@
                var newValue = currentValue.slice(0, -1);
                document.getElementById("result").value = newValue;
             }
+        }
+        function calcOn(){
+            document.getElementById("result").style.backgroundColor="aliceblue";
+        }
+        function calcOff(){
+            document.getElementById("result").value="";
+            document.getElementById("result").style.backgroundColor = "gray";
         }
     </script>
 </body>
